@@ -1,8 +1,12 @@
 #!/bin/python3
 from flask import Flask, request
-from transformers import AutoTokenizer, AutoModelForSeq2SeqLM
+from transformers import AutoTokenizer, TFAutoModelForSeq2SeqLM
+from flask_cors import CORS
+
 
 app = Flask(__name__)
+CORS(app)
+
 
 @app.route('/', methods=['POST'])
 def transdocker():
@@ -15,7 +19,7 @@ def translate(input_string):
     # For now, let's simply return a modified version of the input string
 
     tokenizer = AutoTokenizer.from_pretrained("Helsinki-NLP/opus-mt-en-de")
-    model = AutoModelForSeq2SeqLM.from_pretrained("Helsinki-NLP/opus-mt-en-de")
+    model = TFAutoModelForSeq2SeqLM.from_pretrained("Helsinki-NLP/opus-mt-en-de")
 
     # Example input text
     input_text = "Hello, how are you?"
@@ -31,4 +35,5 @@ def translate(input_string):
 
     return translated_text
 
-    
+if __name__ == '__main__':
+    app.run(host='0.0.0.0', port=5000)

@@ -1,7 +1,7 @@
 # Dockerfile
 
 # Set the base image
-FROM python:3.7
+FROM python:3.9
 
 # Set the working directory
 WORKDIR /app
@@ -23,7 +23,7 @@ ENV PYTHONPATH=/app
 ENV PYTHONUNBUFFERED=1
 
 # Install the dependencies
-RUN pip install -r requirements.txt
+RUN pip install --no-cache-dir -r requirements.txt
 
 # Start the python script
 CMD ["python", "server.py"]
