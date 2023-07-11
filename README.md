@@ -9,7 +9,7 @@ Using the en-de ml model (`opus-mt-en-de`) of the University of Helsinki inside 
 2) Change into the directory `cd transdocker`
 3) Build the docker container `docker build -t transdocker:v1 .`
 4) Run the docker container `docker run -it -p5000:5000 transdocker:v1`
-5) Open the `index.html`
+5) Open the `index.html` 
 
 ## Citation Information
 ```
